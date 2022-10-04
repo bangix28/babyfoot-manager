@@ -21,7 +21,7 @@ function createGameShow(message) {
     if (message.isFromClient === true) {
         let containerGameUser = document.getElementById("gameUser")
         containerGameUser.innerHTML = "<p>" + message.data.name_player1 + " : <button id='positive_score1' type='button'>+ </button><span id='score_player1'>" + message.data.score_player1 +
-            "</span><button id='negatif_score1' type='button' >- </button> </p>" +
+            "</span><button id='negatif_score1' type='button' >- </button>" +
             message.data.name_player2 + " : <button id='positive_score2' type='button'>+ </button><span id='score_player2'>" + message.data.score_player2 + "</span><button id='negatif_score2'" +
             " type='button'> - </button><br> <button id='delete' type='button'>delete</button>  <button id='endGame' type='button'>Fin de partie</button></p>"
         const positive_score1 = document.getElementById("positive_score1")
@@ -56,7 +56,7 @@ function createGameShow(message) {
         let listGameUser = document.getElementById("babyfoot-list")
         let lastGameList = listGameUser.lastElementChild
         let firstGameList = listGameUser.firstElementChild
-        firstGameList.insertAdjacentHTML('beforebegin', "<article id='"+ message.data.idGame +"'> <p>" + message.data.name_player1 + " : <span class='score_player2'> " + message.data.score_player1 + "</span> VS "
+        firstGameList.insertAdjacentHTML('beforebegin', "<article id='"+ message.data.idGame +"'> <p>" + message.data.name_player1 + " : <span class='score_player1'> " + message.data.score_player1 + "</span> VS "
             + message.data.name_player2 + " : <span class='score_player2'>" + message.data.score_player2 + " </span> || " + message.data.date + "</p> </article>")
         lastGameList.remove()
     }
