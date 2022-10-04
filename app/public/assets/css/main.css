@@ -1,0 +1,29 @@
+
+h1{
+    text-align: center;
+}
+
+.container {
+    margin: 5% 10% 5% 10%;
+}
+
+.inline-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.gameUser {
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 100%;
+}
+
+.gameUser p {
+    font-size: 35px;
+}
+
+.gameUser p button {
+    margin-left: 15px;
+    margin-right: 15px;
+}
