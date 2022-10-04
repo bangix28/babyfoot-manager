@@ -27,6 +27,8 @@ class BabyFootManager
         $query = "INSERT INTO `babyfoot_manager` (`name_player1`, `name_player2`, `score_player1`, `score_player2`,user_id, status,`date`) VALUES (?,?,?,?,?,?,now());";
         $prepared_statements = $this->pdo->prepare($query);
         $prepared_statements->execute(array($data->name_player1, $data->name_player2, 0, 0, $userId, $status));
+        $date = new DateTime('now');
+        $date_formated = $date->format('Y-m-d H:i:s');
         return (object)array(
             "event" => "createGame",
             "isFromClient" => false,
@@ -37,7 +39,7 @@ class BabyFootManager
                 "score_player1" => 0,
                 "score_player2" => 0,
                 "status" => $status,
-                "date" => new DateTime('now')
+                "date" => $date_formated
 
             ),
             "client" => true,
