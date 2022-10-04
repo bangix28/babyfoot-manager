@@ -5,8 +5,6 @@ Babyfoot-manager est une application PHP et JS vanilla pour gerer une partie de 
 
 
 
-
-
 ## Instalation et lancement du projets
 
 1- télécharger le repository.
@@ -18,18 +16,27 @@ docker build -t babyfoot-manager .
 docker-composer up
 ```
 
-3- Installez les dépendances avec composer install dans l'invite de commande du conteneur application.
+4- Accédez à la page adminer http://localhost:8080 
+```sh
+    serveur : mysql
+    Utilisateur : root
+    Mot de passe :  root
+```
+5 - Puis importez la base de données présente dans le fichier mysql à la racine projet.
+
+
+6- Installez les dépendances avec composer install dans l'invite de commande du conteneur application.
 ```sh
 composer install
 ```
 
-4- Lancer le script websocket dans l'invite de commmande du conteneur application
+7- Lancer le script websocket dans l'invite de commmande du conteneur application
 
 ```sh
 php bin/websocket.php
 ```
 
-5- Dans votre navigateur rendez vous a l'url http://localhost:80 afin d'accédez a l'application.
+8- Dans votre navigateur rendez vous a l'url http://localhost:80 afin d'accédez a l'application.
 ## Tech Stack
 
 **Client:** JS vanilla
