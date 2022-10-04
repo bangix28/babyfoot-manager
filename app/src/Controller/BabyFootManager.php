@@ -157,7 +157,7 @@ class BabyFootManager
                 "data" => array(
                     "status" => $data->status
                 ),
-                "client" => true,
+                "client" => false,
                 "otherClient" => false,
             );
         }
