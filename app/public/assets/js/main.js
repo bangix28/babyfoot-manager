@@ -57,7 +57,7 @@ function createGameShow(message) {
         let lastGameList = listGameUser.lastElementChild
         let firstGameList = listGameUser.firstElementChild
         firstGameList.insertAdjacentHTML('beforebegin', "<article id='"+ message.data.idGame +"'> <p>" + message.data.name_player1 + " : <span class='score_player2'> " + message.data.score_player1 + "</span> VS "
-            + message.data.name_player2 + " : <span class='score_player2'>" + message.data.score_player2 + " </span> || " + message.data.date.date + "</p> </article>")
+            + message.data.name_player2 + " : <span class='score_player2'>" + message.data.score_player2 + " </span> || " + message.data.date + "</p> </article>")
         lastGameList.remove()
     }
 }
