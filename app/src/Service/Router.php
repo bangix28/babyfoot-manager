@@ -8,6 +8,9 @@ use Ratchet\ConnectionInterface;
 use Ratchet\MessageComponentInterface;
 use SplObjectStorage;
 
+/**
+ *
+ */
 class Router implements MessageComponentInterface
 {
     public $babyFootManager;
@@ -19,14 +22,25 @@ class Router implements MessageComponentInterface
         $this->babyFootManager = new BabyFootManager();
     }
 
+    /**
+     * @param ConnectionInterface $conn
+     * @return void
+     * Stockez la nouvelle connexion pour envoyer des messages plus tard
+     */
     public function onOpen(ConnectionInterface $conn)
     {
-        // Store the new connection to send messages to later
+
         $this->clients->attach($conn);
         echo "New connection! ($conn->resourceId)\n";
 
     }
 
+    /**
+     * @param ConnectionInterface $from
+     * @param $msg
+     * @return void
+     * Récupère les messages du client et appelle la fonction requise pour traiter le message et envoie à tous les clients les informations qui ont été traitées.
+     */
     public function onMessage(ConnectionInterface $from, $msg)
     {
         $user_id = $from->resourceId;
@@ -42,12 +56,13 @@ class Router implements MessageComponentInterface
         foreach ($this->clients as $client) {
 
             if ($from !== $client && $response->otherClient === true) {
-                // The sender is not the receiver, send to each client connected
+                // Envoie un message à tous les utilisateurs qui ne sont pas l'expéditeur.
                 $response->isFromClient = false;
                 $response_encoded = json_encode($response);
                 $client->send($response_encoded);
             }
             if ($from == $client && $response->client) {
+                //Envoie une réponse à l'expéditeur
                 $response->isFromClient = true;
                 $response_encoded = json_encode($response);
                 $client->send($response_encoded);
@@ -56,13 +71,23 @@ class Router implements MessageComponentInterface
     }
 
 
+    /**
+     * @param ConnectionInterface $conn
+     * @return void
+     * Quand la connection au client et perdu, supprime celui-ci
+     */
     public function onClose(ConnectionInterface $conn)
     {
-        // The connection is closed, remove it, as we can no longer send it messages
         $this->clients->detach($conn);
         echo "Connection {$conn->resourceId} has disconnected\n";
     }
 
+    /**
+     * @param ConnectionInterface $conn
+     * @param Exception $e
+     * @return void
+     * Quand une erreur est envoyer arrete la connection
+     */
     public function onError(ConnectionInterface $conn, Exception $e)
     {
         echo "An error has occurred: {$e->getMessage()}\n";
