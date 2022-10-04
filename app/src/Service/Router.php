@@ -8,7 +8,7 @@ use Ratchet\ConnectionInterface;
 use Ratchet\MessageComponentInterface;
 use SplObjectStorage;
 
-class MyChat implements MessageComponentInterface
+class Router implements MessageComponentInterface
 {
     public $babyFootManager;
     protected $clients;
