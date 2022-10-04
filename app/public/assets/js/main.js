@@ -130,6 +130,9 @@ function createDashboard(message) {
 
 //Ajoute des actions aux boutons du tableau de bord de la partie
 function createButtonAction(message) {
+
+    let containerGameUser = document.getElementById("gameUser")
+
     const positive_score1 = document.getElementById("positive_score1")
     const positive_score2 = document.getElementById("positive_score2")
     const negatif_score1 = document.getElementById("negatif_score1")
