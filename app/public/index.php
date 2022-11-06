@@ -38,22 +38,23 @@ $listOfGames = $babyFootManager->showGames();
             <div class="gameUser" id="gameUser"></div>
 
         </form>
-    <article>
-        <h2>Liste des partie</h2>
-        <div id="babyfoot-list" class="babyfoot-list">
-            <?php
-            foreach ($listOfGames as $game) {
-
-                echo <<<HTML
-                <article id="$game->id">
-                    <p>$game->name_player1 : <span class="score_player1"> $game->score_player1 </span> VS <span class="score_player2"> $game->name_player2 </span> : $game->score_player2 || 
-                    $game->date</p>
+        <article>
+            <h2>Liste des partie</h2>
+            <div id="babyfoot-list" class="babyfoot-list">
+                <?php
+                foreach ($listOfGames as $game) {
+                    $statusOfGames = ($game->status == 'live') ? "liveGame" : "endedGame";
+                    echo <<<HTML
+                <article class="gameList" id="$game->id">
+                    <p><span class="statusGame $statusOfGames"></span> $game->name_player1&nbsp;:&nbsp;<span class="score_player1"> $game->score_player1 </span>&nbsp;VS&nbsp; <span 
+                    class="score_player2"> 
+                    $game->name_player2 </span> : $game->score_player2 || $game->date </p>
                 </article>
                 HTML;
-            }
-            ?>
-        </div>
-    </article>
+                }
+                ?>
+            </div>
+        </article>
     </div>
 </div>
 <script src="assets/js/main.js"></script>

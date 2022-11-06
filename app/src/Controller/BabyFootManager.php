@@ -30,7 +30,7 @@ class BabyFootManager
      */
     public function createGame($data, $userId)
     {
-        $status = "in progress";
+        $status = "live";
         $query = "INSERT INTO `babyfoot_manager` (`name_player1`, `name_player2`, `score_player1`, `score_player2`,user_id, status,`date`) VALUES (?,?,?,?,?,?,now());";
         $prepared_statements = $this->pdo->prepare($query);
         $prepared_statements->execute(array($data->name_player1, $data->name_player2, 0, 0, $userId, $status));
@@ -155,7 +155,7 @@ class BabyFootManager
                 "event" => "updateGame",
                 "idGame" => $data->idGame,
                 "data" => array(
-                    "status" => $data->status
+                    "status" => $status
                 ),
                 "client" => false,
                 "otherClient" => false,

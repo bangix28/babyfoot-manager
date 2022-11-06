@@ -23,6 +23,8 @@ function createGame() {
 
 function createGameShow(message) {
     //Crée le tableau de bord avec le score et les boutons pour éditer, supprimer et finir le jeu à la création du jeux
+    let statusOfGame = (message.data.status == 'live') ? "liveGame": "endedGame"
+    console.log(statusOfGame)
     if (message.isFromClient === true) {
 
         createDashboard(message)
@@ -33,7 +35,9 @@ function createGameShow(message) {
         let listGameUser = document.getElementById("babyfoot-list")
         let lastGameList = listGameUser.lastElementChild
         let firstGameList = listGameUser.firstElementChild
-        firstGameList.insertAdjacentHTML('beforebegin', "<article id='" + message.data.idGame + "'> <p>" + message.data.name_player1 + " : <span class='score_player1'> " + message.data.score_player1 + "</span> VS "
+
+        firstGameList.insertAdjacentHTML('beforebegin', "<article class='gameList' id='" + message.data.idGame + "'> <p><span class='statusGame " + statusOfGame + "'></span>" + message.data.name_player1 + " : <span" +
+        " class='score_player1'> " + message.data.score_player1 + "</span> VS "
             + message.data.name_player2 + " : <span class='score_player2'>" + message.data.score_player2 + " </span> || " + message.data.date + "</p> </article>")
         lastGameList.remove()
     }
