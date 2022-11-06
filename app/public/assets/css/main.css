@@ -27,3 +27,23 @@ h1{
     margin-left: 15px;
     margin-right: 15px;
 }
+
+.gameList p{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.liveGame {
+    width: 10px;
+    height: 10px;
+    background: red;
+    border-radius: 50%
+
+}
+.endedGame {
+    width: 10px;
+    height: 10px;
+    background: grey;
+    border-radius: 50%
+}
